@@ -31,6 +31,12 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Import existing DynamoDB tables
+        run: |
+          terraform import aws_dynamodb_table.customers Customers  || true
+          terraform import aws_dynamodb_table.products  Products   || true
+          terraform import aws_dynamodb_table.orders    Orders     || true
+
       - name: Terraform Validate
         run: terraform validate
 
