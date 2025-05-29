@@ -1,104 +1,47 @@
-# Customers table
 resource "aws_dynamodb_table" "customers" {
-  name           = "Customers"
-  billing_mode   = "PROVISIONED"
-  read_capacity  = var.read_capacity
-  write_capacity = var.write_capacity
-  hash_key       = "CustomerId"
+  name         = "Customers"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "cpf"
 
   attribute {
-    name = "CustomerId"
+    name = "cpf"
     type = "S"
-  }
-
-  attribute {
-    name = "Email"
-    type = "S"
-  }
-
-  # secondary index on email for lookups
-  global_secondary_index {
-    name               = "EmailIndex"
-    hash_key           = "Email"
-    projection_type    = "ALL"
-    read_capacity      = var.read_capacity
-    write_capacity     = var.write_capacity
   }
 
   tags = {
-    Service = "TechChallenge"
-    Table   = "Customers"
+    Environment = "dev"
+    Project     = "tech-challenge"
   }
 }
 
-# Products table
 resource "aws_dynamodb_table" "products" {
-  name           = "Products"
-  billing_mode   = "PROVISIONED"
-  read_capacity  = var.read_capacity
-  write_capacity = var.write_capacity
-  hash_key       = "ProductId"
+  name         = "Products"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "id"
 
   attribute {
-    name = "ProductId"
+    name = "id"
     type = "S"
-  }
-
-  attribute {
-    name = "Category"
-    type = "S"
-  }
-
-  # index on category
-  global_secondary_index {
-    name               = "CategoryIndex"
-    hash_key           = "Category"
-    projection_type    = "ALL"
-    read_capacity      = var.read_capacity
-    write_capacity     = var.write_capacity
   }
 
   tags = {
-    Service = "TechChallenge"
-    Table   = "Products"
+    Environment = "dev"
+    Project     = "tech-challenge"
   }
 }
 
-# Orders table
 resource "aws_dynamodb_table" "orders" {
-  name           = "Orders"
-  billing_mode   = "PROVISIONED"
-  read_capacity  = var.read_capacity
-  write_capacity = var.write_capacity
-  hash_key       = "OrderId"
-  range_key      = "CreatedAt"    # so we can sort by creation time
+  name         = "Orders"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "orderId"
 
   attribute {
-    name = "OrderId"
+    name = "orderId"
     type = "S"
-  }
-
-  attribute {
-    name = "CreatedAt"
-    type = "S"
-  }
-
-  attribute {
-    name = "Status"
-    type = "S"
-  }
-
-  # index on status to list by status
-  global_secondary_index {
-    name               = "StatusIndex"
-    hash_key           = "Status"
-    projection_type    = "ALL"
-    read_capacity      = var.read_capacity
-    write_capacity     = var.write_capacity
   }
 
   tags = {
-    Service = "TechChallenge"
-    Table   = "Orders"
+    Environment = "dev"
+    Project     = "tech-challenge"
   }
 }

@@ -3,15 +3,3 @@ variable "aws_region" {
   type        = string
   default     = "us-east-1"
 }
-
-variable "read_capacity" {
-  description = "DynamoDB read capacity units (for PROVISIONED billing)."
-  type        = number
-  default     = 5
-}
-
-variable "write_capacity" {
-  description = "DynamoDB write capacity units (for PROVISIONED billing)."
-  type        = number
-  default     = 5
-}
