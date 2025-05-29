@@ -1,40 +1,17 @@
 variable "aws_region" {
-  description = "AWS region"
+  description = "AWS region to deploy into"
   type        = string
   default     = "us-east-1"
 }
 
-variable "db_identifier" {
-  description = "RDS instance identifier"
-  type        = string
-  default     = "tc-db"
-}
-
-variable "db_name" {
-  description = "Initial database name"
-  type        = string
-  default     = "techchallenge"
-}
-
-variable "db_username" {
-  description = "Master username"
-  type        = string
-  default     = "admin"
-}
-
-variable "db_password" {
-  description = "Master password"
-  type        = string
-}
-
-variable "instance_class" {
-  description = "RDS instance class"
-  type        = string
-  default     = "db.t3.micro"
-}
-
-variable "allocated_storage" {
-  description = "Storage in GB"
+variable "read_capacity" {
+  description = "DynamoDB read capacity units (for PROVISIONED billing)."
   type        = number
-  default     = 20
+  default     = 5
+}
+
+variable "write_capacity" {
+  description = "DynamoDB write capacity units (for PROVISIONED billing)."
+  type        = number
+  default     = 5
 }

@@ -1,9 +1,14 @@
-output "db_endpoint" {
-  description = "RDS instance endpoint"
-  value       = aws_db_instance.this.endpoint
+output "customers_table_name" {
+  description = "DynamoDB table name for Customers"
+  value       = aws_dynamodb_table.customers.name
 }
 
-output "db_port" {
-  description = "RDS instance port"
-  value       = aws_db_instance.this.port
+output "products_table_name" {
+  description = "DynamoDB table name for Products"
+  value       = aws_dynamodb_table.products.name
+}
+
+output "orders_table_name" {
+  description = "DynamoDB table name for Orders"
+  value       = aws_dynamodb_table.orders.name
 }
