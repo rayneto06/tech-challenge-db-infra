@@ -10,4 +10,4 @@ terraform plan
 terraform apply   # confirm "yes"
 
 ## CI Test
-This line was added purely to test the Terraform GitHub Actions pipeline.
+Testing CI
